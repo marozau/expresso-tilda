@@ -1,5 +1,4 @@
 <?php
-header("Access-Control-Allow-Origin: *");
 function rudr_mailchimp_subscriber_status( $email, $status, $list_id, $api_key, $merge_fields = array('FNAME' => '','LNAME' => '') ){
 	$data = array(
 		'apikey'        => $api_key,
@@ -25,7 +24,7 @@ function rudr_mailchimp_subscriber_status( $email, $status, $list_id, $api_key, 
 $email = $_POST["email"];
 $status = 'pending'; // "subscribed" or "unsubscribed" or "cleaned" or "pending"
 $list_id = $_POST["list_id"];
-$api_key = '3721ecfffca28821ed48e9e2a8e0bdcd-us9'; // where to get it read above
+$api_key = $_ENV["MAILCHIMP_API_KEY"]; // where to get it read above
  
 $result = rudr_mailchimp_subscriber_status($email, $status, $list_id, $api_key );
 if(!$result) {
@@ -36,9 +35,4 @@ if(!$result) {
   echo 'Почти готово! Теперь проверь свой почтовый ящик.';
 }
 
-if ($_COOKIE['esearch']=='') {
-  $esearch = hash('ripemd160', $_POST["email"]);
-  setcookie('esearch',$esearch,time() + (86400 * 7));
-}
-fwrite(STDOUT, $_COOKIE['esearch'])
 ?>

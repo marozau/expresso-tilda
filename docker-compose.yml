@@ -4,3 +4,5 @@ expresso-tilda:
     io.rancher.container.hostname_override: container_name
   ports:
     - 80:80
+  environment:
+    MAILCHIMP_API_KEY:
