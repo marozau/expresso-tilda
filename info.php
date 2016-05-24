@@ -24,7 +24,7 @@ function rudr_mailchimp_subscriber_status( $email, $status, $list_id, $api_key, 
 $email = $_POST["email"];
 $status = 'pending'; // "subscribed" or "unsubscribed" or "cleaned" or "pending"
 $list_id = $_POST["list_id"];
-$api_key = $_ENV["MAILCHIMP_API_KEY"]; // where to get it read above
+$api_key = getenv("MAILCHIMP_API_KEY"); // where to get it read above
  
 $result = rudr_mailchimp_subscriber_status($email, $status, $list_id, $api_key );
 if(!$result) {
