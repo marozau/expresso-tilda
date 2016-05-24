@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 function rudr_mailchimp_subscriber_status( $email, $status, $list_id, $api_key, $merge_fields = array('FNAME' => '','LNAME' => '') ){
 	$data = array(
 		'apikey'        => $api_key,
